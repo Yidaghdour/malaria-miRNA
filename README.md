@@ -4,6 +4,9 @@ Integrative genomic analysis reveals mechanisms of immune evasion in P. falcipar
 Types of analysis:
 
 1) [miRNA-Analysis](#miRNA-Analysis)
+  a. [miRNA profiling](#miRNA-Analysis)
+  b. [eQTL analysis](#miRNA-Analysis)
+  c. [Mediation analysis](#miRNA-Analysis)
 
 2) [mRNA-Analysis](#mRNA-Analysis)
 
