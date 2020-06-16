@@ -51,9 +51,8 @@ perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File
 
 Filtered row counts were  log2 transformed, before being mean normalized using JMP 509 Genomics 8 (SAS Institute).
 
-### Data Analysis: QTL
+### miRNA-eQTL analysis
 
-### CIS eQTL:
 For each miRNA in our replication dataset, the level of expression was tested against all variants (MAF > 5%, HWE p-value >0.05) located within a window of **200 kb** centered from the miRNA.
 
 The following model was used to test for miRNA-SNP associations using **100,000** permutations to assess statistical significance:
