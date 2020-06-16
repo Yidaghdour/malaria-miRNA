@@ -49,7 +49,9 @@ Fastq files are compressed using [Oasis compressor](http://oasis.ims.bio/manual/
 miRNAs expressed at a minimum count of 10 reads in at least 50% of the samples per experimental condition were retained, producing a final dataset of 320 miRNAs in the discovery and replication sets. This was achieved by running two perl programs as shown below. First the results from oasis were merged per Sample and filtered there after
 ```
 perl Join_Count_miRNA.pl /PATH/TO/OASIS/OUPUT/FOLDER
+
 perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File 
+
 ```
 **Step 4:** Normalization of data 
 
@@ -67,6 +69,7 @@ The following model was used to test for miRNA-SNP associations using **100,000*
 
 ```
 plink --bfile $MAIN_PLINK_FILE_NAME --chr $chr  --from-bp $s1 --to-bp $s2 --recode --out $ID --make-bed
+
 ```
 
 $ID: miRNAID       
@@ -82,8 +85,9 @@ $COV: Covariate file
 **Step 2:** miRNA-SNP associations with  100,000 permutation
 ```
 plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
+
 ```
-### Data Analysis: mediation analysis
+### Mediation analysis
 Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia. An example code of the analysis between SNP **rs114136945** and miRNA **miR_598_3p** is provided below
 
 ```
