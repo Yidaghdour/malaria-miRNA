@@ -53,7 +53,7 @@ perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File
 ```
 **Step 4:** Normalization of data 
 
-Filtered row counts were  log2 transformed, before being mean normalized using JMP 509 Genomics 8 (SAS Institute).
+Filtered row counts were  log2 transformed, before being mean normalized using JMP Genomics 8 (SAS Institute).
 
 ### miRNA-eQTL analysis
 
