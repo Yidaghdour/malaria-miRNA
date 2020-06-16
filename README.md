@@ -79,6 +79,8 @@ $COV: Covariate file
 
 
 ### Data Analysis: mediation analysis
+Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia.
+
 ```
 model.0 <- lm(Log2_Parasitemia ~ rs114136945, data)
 summary(model.0)
