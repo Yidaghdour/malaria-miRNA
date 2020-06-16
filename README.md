@@ -1,7 +1,11 @@
 # malaria-miRNA
 Integrative genomic analysis reveals mechanisms of immune evasion in P. falciparum malaria
 
+Types of analysis:
 
+-miRNA-Analysis
+
+-mRNA-Analysis
 ## miRNA-Analysis
 
 #### Data
