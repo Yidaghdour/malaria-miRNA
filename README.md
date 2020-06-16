@@ -69,9 +69,11 @@ Filtered row counts were  log2 transformed, before being mean normalized using J
 For each miRNA in our replication dataset, the level of expression was tested against all variants (MAF > 5%, HWE p-value >0.05) located within a window of **200 kb** centered from the miRNA.
 
 The following model was used to test for miRNA-SNP associations using **100,000** permutations to assess statistical significance:
+```
 
 **miRNA expression = μ + SNP + Age + Sex + WBC + Parasitemia + ε**
 
+```
 **Step 1:** Fetch SNP's in cis region of each miRNA
 
 ```
@@ -88,6 +90,7 @@ $s1: miRNA START-100000
 $s2: miRNA END+100000
 
 $COV: Covariate file
+
 
 **Step 2:** miRNA-SNP associations with  100,000 permutation
 ```
