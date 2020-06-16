@@ -36,7 +36,6 @@ Whole blood miRNAs expression profiles across matched individuals  in the four s
 
 [plink](https://www.cog-genomics.org/plink/): v1.90b5.3 
 
-#Usage-Pipeline
 ### Usage Pipeline : miRNA  Data Analysis
 
 
