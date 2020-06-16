@@ -5,7 +5,7 @@ Types of analysis:
 
 1) [miRNA-Analysis](#miRNA-Analysis)
 
-    a. [miRNA profiling](#Usage-Pipeline)
+    a. [miRNA profiling](#Usage-Pipeline:-miRNA-Data-Analysis)
   
     b. [eQTL analysis](#miRNA-eQTL-analysis)
   
@@ -64,7 +64,6 @@ perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File
 
 Filtered row counts were  log2 transformed, before being mean normalized using JMP Genomics 8 (SAS Institute).
 
-#miRNA-eQTL-analysis
 ### miRNA-eQTL analysis
 
 For each miRNA in our replication dataset, the level of expression was tested against all variants (MAF > 5%, HWE p-value >0.05) located within a window of **200 kb** centered from the miRNA.
@@ -95,7 +94,6 @@ $COV: Covariate file
 plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
 
 ```
-#Mediation-analysis
 ### Mediation analysis
 Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia. An example code of the analysis between SNP **rs114136945** and miRNA **miR_598_3p** is provided below
 
