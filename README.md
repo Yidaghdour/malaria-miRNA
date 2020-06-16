@@ -41,6 +41,7 @@ fastx_trimmer -l 25 -i  TRIMMED/Sample_miRNA-NAME_read1.fastq -o  TRIMMED/Sample
 
 ```
 **Step 2:** Map  Sequencing Data using OASIS
+Fastq files are compressed using [Oasis compressor](http://oasis.ims.bio/manual/srna_input.html#oasis-compressor) and submiited online for Oasis sRNA detection pipeline.
 
 **Step 3:**  Merge The results from oasis per Sample and Filter based on minimum count 10 Read count and least 50% of the samples per experimental condition  
 ```
