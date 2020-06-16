@@ -12,7 +12,7 @@ Integrative genomic analysis reveals mechanisms of immune evasion in P. falcipar
 
 [plink](https://www.cog-genomics.org/plink/): v1.90b5.3 
 
-# Data Analysis: Trim, Aligning and Filtering Data
+### Data Analysis: Trim, Aligning and Filtering Data
 
 
 **Step 1:** Trim Reads for adaptors, quality and polyA tails:
@@ -31,7 +31,7 @@ perl Join_Count.pl /PATH/TO/OASIS/OUPUT/FOLDER
 perl Filter_On_Consolidated.pl /PATH/TO/CONSOLIDATED_RESULT File 
 ```
 
-# Data Analysis: QTL
+### Data Analysis: QTL
 
 ```
 plink --all-pheno --bfile ALL --covar Cov.tsv  --linear interaction dominant  --no-sex  --pheno miRNA_iqr.tsv  --out INT  --parameters 1-7 
@@ -58,7 +58,7 @@ $s2: miRNA END+100000
 $COV: Covariate file
 
 
-# Data Analysis: mediation analysis
+### Data Analysis: mediation analysis
 ```
 model.0 <- lm(Log2_Parasitemia ~ rs114136945, data)
 summary(model.0)
@@ -73,9 +73,9 @@ results <- mediate(model.miR, model.paras, treat = "rs114136945", mediator = "mi
 summary(results)
 ```
 
-# mRNA
+### mRNA Analysis:
 
-## Dependencies
+### Dependencies
 **REFERENCE**: Ensembl494 GRCh38 release-84
 
 [**STAR**](https://github.com/alexdobin/STAR): v2.5.0c
@@ -83,7 +83,7 @@ summary(results)
 [**cufflinks**](http://cole-trapnell-lab.github.io/cufflinks/):  v2.2.1
 
 
-## Usage Pipeline
+### Usage Pipeline
 
 **Step 1:** Align trimmed RNA Sequencing Data and create Index of the bam
 ```
