@@ -57,6 +57,9 @@ Filtered row counts were  log2 transformed, before being mean normalized using J
 plink --all-pheno --bfile ALL --covar Cov.tsv  --linear interaction dominant  --no-sex  --pheno miRNA_iqr.tsv  --out INT  --parameters 1-7 
 ```
 ### CIS eQTL:
+For each miRNA in our replication dataset, the level of expression was tested against all variants (MAF > 5%, HWE p-value >0.05) located within a window of 200 kb centered from the miRNA.
+
+miRNA expression = μ + SNP + Age + Sex + WBC + Parasitemia + ε
 
 **Step 1:** Fetch SNP's in cis region of each miRNA
 
