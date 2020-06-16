@@ -47,6 +47,9 @@ fastx_trimmer -l 25 -i  TRIMMED/Sample_miRNA-NAME_read1.fastq -o  TRIMMED/Sample
 perl Join_Count_miRNA.pl /PATH/TO/OASIS/OUPUT/FOLDER
 perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File 
 ```
+**Step 4:** Normalization of data 
+
+Filtered row counts were  log2 transformed, before being mean normalized using JMP 509 Genomics 8 (SAS Institute).
 
 ### Data Analysis: QTL
 
