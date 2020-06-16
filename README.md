@@ -10,7 +10,7 @@ Types of analysis:
 # miRNA-Analysis
 
 #### Data
-68 whole blood miRNAs expression profiles across matched individuals  in the four stages sampled: 
+Whole blood miRNAs expression profiles across matched individuals  in the four stages sampled: 
 
 **Visit 1** : before infection (BI)
 
