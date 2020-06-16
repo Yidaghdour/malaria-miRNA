@@ -61,13 +61,10 @@ The following model was used to test for miRNA-SNP associations using **100,000*
 
 **Step 1:** Fetch SNP's in cis region of each miRNA
 
-
 ```
 plink --bfile $MAIN_PLINK_FILE_NAME --chr $chr  --from-bp $s1 --to-bp $s2 --recode --out $ID --make-bed
 ```
-```
-plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
-```
+
 $ID: miRNAID       
 
 $chr: miRNA Chromosome      
@@ -78,7 +75,10 @@ $s2: miRNA END+100000
 
 $COV: Covariate file
 
-
+**Step 2:** miRNA-SNP associations with  100,000 permutation
+```
+plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
+```
 ### Data Analysis: mediation analysis
 Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia.
 
