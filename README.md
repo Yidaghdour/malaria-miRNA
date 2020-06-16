@@ -133,8 +133,6 @@ perl Convert_FPKM_To_TPM_mRNA.pl /PATH/TO/CUFFLINK
 Filter_TPM_mRNA.pl /PATH/TO/Consolidate_TPM.txt
 ```
 
-**Step 5:** Convert log10(TPM+1)
+**Step 5:** Normalization of Data 
 
-```
-perl log10_TPM_mRNA.pl /PATH/TO/File
-```
+Filterd TPM data is log10-scaled before being  IQR normalized using JMP Genomics (SAS Institute).
