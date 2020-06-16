@@ -5,7 +5,7 @@ Types of analysis:
 
 1) [miRNA-Analysis](#miRNA-Analysis)
 
-    a. [miRNA profiling](#Usage-Pipeline:-miRNA-Data-Analysis)
+    a. [miRNA profiling](#Usage-Pipeline-:-miRNA-Data-Analysis)
   
     b. [eQTL analysis](#miRNA-eQTL-analysis)
   
@@ -36,7 +36,7 @@ Whole blood miRNAs expression profiles across matched individuals  in the four s
 
 [plink](https://www.cog-genomics.org/plink/): v1.90b5.3 
 
-### Usage Pipeline : miRNA  Data Analysis
+### Usage Pipeline : miRNA Data Analysis
 
 
 **Step 1:** Trim Reads for adaptors, quality and polyA tails:
