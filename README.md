@@ -3,11 +3,11 @@ Integrative genomic analysis reveals mechanisms of immune evasion in P. falcipar
 
 Types of analysis:
 
-1) miRNA-Analysis
+1) [miRNA-Analysis](#miRNA-Analysis)
 
-2) mRNA-Analysis
+2) [mRNA-Analysis](#mRNA-Analysis)
 
-## miRNA-Analysis
+# miRNA-Analysis
 
 #### Data
 68 whole blood miRNAs expression profiles across matched individuals  in the four stages sampled: 
@@ -90,7 +90,7 @@ results <- mediate(model.miR, model.paras, treat = "rs114136945", mediator = "mi
 summary(results)
 ```
 
-### mRNA Analysis:
+# mRNA-Analysis:
 
 ### Dependencies
 **REFERENCE**: Ensembl494 GRCh38 release-84
