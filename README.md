@@ -6,6 +6,7 @@ Integrative genomic analysis reveals mechanisms of immune evasion in P. falcipar
 
 #### Data
 68 whole blood miRNAs expression profiles across matched individuals  in the four stages sampled: 
+
 **Visit 1** : before infection (BI)
 
 **Visit 2** : asymptomatic parasitemia (AP)
