@@ -40,10 +40,13 @@ java -jar trimmomatic-0.36.jar SE -threads 12 -phred33 -trimlog Sample_miRNA-NAM
 fastx_trimmer -l 25 -i  TRIMMED/Sample_miRNA-NAME_read1.fastq -o  TRIMMED/Sample_miRNA-NAME_R1.fastq -Q33 -m 16
 
 ```
-**Step 2:** Map  Sequencing Data using OASIS
+**Step 2:** Map Sequencing Data using OASIS
+
 Fastq files are compressed using [Oasis compressor](http://oasis.ims.bio/manual/srna_input.html#oasis-compressor) and submiited online for Oasis sRNA detection pipeline.
 
-**Step 3:**  Merge The results from oasis per Sample and Filter based on minimum count 10 Read count and least 50% of the samples per experimental condition  
+**Step 3:**  Filtering Count
+
+miRNAs expressed at a minimum count of 10 reads in at least 50% of the samples per experimental condition were retained, producing a final dataset of 320 miRNAs in the discovery and replication sets. This was achieved by running two perl programs as shown below. First the results from oasis were merged per Sample and filtered there after
 ```
 perl Join_Count_miRNA.pl /PATH/TO/OASIS/OUPUT/FOLDER
 perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File 
