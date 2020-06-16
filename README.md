@@ -1,2 +1,113 @@
 # malaria-miRNA
 Integrative genomic analysis reveals mechanisms of immune evasion in P. falciparum malaria
+
+
+## miRNA-Analysis
+### Command Line Utilities
+[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic): v0.36
+
+[FASTX Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/): v0.0.14
+
+[OASIS](http://oasis.ims.bio/)
+
+[plink](https://www.cog-genomics.org/plink/): v1.90b5.3 
+
+# Data Analysis: Trim, Aligning and Filtering Data
+
+
+**Step 1:** Trim Reads for adaptors, quality and polyA tails:
+
+```
+java -jar trimmomatic-0.36.jar SE -threads 12 -phred33 -trimlog Sample_miRNA-NAME.log Sample_miRNA-NAME_read1.fastq.gz TRIMMED/Sample_miRNA-NAME_read1.fastq ILLUMINACLIP:trimmomatic_adapter.fa:2:30:10 TRAILING:3 LEADING:3 SLIDINGWINDOW:4:15
+
+fastx_trimmer -l 25 -i  TRIMMED/Sample_miRNA-NAME_read1.fastq -o  TRIMMED/Sample_miRNA-NAME_R1.fastq -Q33 -m 16
+
+```
+**Step 2:** Map  Sequencing Data using OASIS
+
+**Step 3:**  Merge The results from oasis per Sample and Filter based on minimum count 10 Read count and least 50% of the samples per experimental condition  
+```
+perl Join_Count.pl /PATH/TO/OASIS/OUPUT/FOLDER
+perl Filter_On_Consolidated.pl /PATH/TO/CONSOLIDATED_RESULT File 
+```
+
+# Data Analysis: QTL
+
+```
+plink --all-pheno --bfile ALL --covar Cov.tsv  --linear interaction dominant  --no-sex  --pheno miRNA_iqr.tsv  --out INT  --parameters 1-7 
+```
+### CIS eQTL:
+
+**Step 1:** Fetch SNP's in cis region of each miRNA
+
+
+```
+plink --bfile $MAIN_PLINK_FILE_NAME --chr $chr  --from-bp $s1 --to-bp $s2 --recode --out $ID --make-bed
+```
+```
+plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
+```
+$ID: miRNAID       
+
+$chr: miRNA Chromosome      
+
+$s1: miRNA START-100000 
+
+$s2: miRNA END+100000
+
+$COV: Covariate file
+
+
+# Data Analysis: mediation analysis
+```
+model.0 <- lm(Log2_Parasitemia ~ rs114136945, data)
+summary(model.0)
+
+model.miR <- lm(miR_598_3p ~ rs114136945, data)
+summary(model.miR)
+
+model.paras <- lm(Log2_Parasitemia ~ rs114136945 + miR_598_3p, data)
+summary(model.paras)
+
+results <- mediate(model.miR, model.paras, treat = "rs114136945", mediator = "miR_598_3p", boot = TRUE, sims=1000)
+summary(results)
+```
+
+# mRNA
+
+## Dependencies
+**REFERENCE**: Ensembl494 GRCh38 release-84
+
+[**STAR**](https://github.com/alexdobin/STAR): v2.5.0c
+
+[**cufflinks**](http://cole-trapnell-lab.github.io/cufflinks/):  v2.2.1
+
+
+## Usage Pipeline
+
+**Step 1:** Align trimmed RNA Sequencing Data and create Index of the bam
+```
+STAR --genomeDir /PATH/STAR/REFERENCE/INDEX/ --readFilesCommand gunzip -c  --readFilesIn Sample_NAME_read1_trimmomatic_1PE.gz Sample_NAME_read2_trimmomatic_2PE.gz --outReadsUnmapped Fastx --outSAMunmapped Within --runThreadN 28 --outFileNamePrefix Sample_NAME --outSAMtype BAM SortedByCoordinate
+
+samtools index Sample_NAME/Aligned.sortedByCoord.out.bam
+```
+**Step 2:** Calculate FPKM 
+```
+cufflinks -p 10 --library-type fr-firststrand -o Sample_NAME/ -G REFERENCE.gtf Sample_NAME/Aligned.sortedByCoord.out.bam
+```
+
+**Step 3:** Convert FPKM To tpm 
+```
+perl Convert_FPKM_To_TPM.pl /PATH/TO/CUFFLINK
+```
+**Step 4:** Filter TPM based on the experimental condition
+
+```
+Filter_TPM.pl /PATH/TO/Consolidate_TPM.txt
+```
+
+**Step 5:** Convert log10(TPM+1)
+
+```
+perl log10_TPM.pl /PATH/TO/File
+```
