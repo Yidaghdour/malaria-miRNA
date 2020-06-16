@@ -80,7 +80,7 @@ $COV: Covariate file
 plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
 ```
 ### Data Analysis: mediation analysis
-Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia.
+Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia. An example code of the analysis between SNP **rs114136945** and miRNA **miR_598_3p** is provided below
 
 ```
 model.0 <- lm(Log2_Parasitemia ~ rs114136945, data)
