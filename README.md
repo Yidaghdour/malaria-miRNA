@@ -44,8 +44,8 @@ fastx_trimmer -l 25 -i  TRIMMED/Sample_miRNA-NAME_read1.fastq -o  TRIMMED/Sample
 
 **Step 3:**  Merge The results from oasis per Sample and Filter based on minimum count 10 Read count and least 50% of the samples per experimental condition  
 ```
-perl Join_Count.pl /PATH/TO/OASIS/OUPUT/FOLDER
-perl Filter_On_Consolidated.pl /PATH/TO/CONSOLIDATED_RESULT File 
+perl Join_Count_miRNA.pl /PATH/TO/OASIS/OUPUT/FOLDER
+perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File 
 ```
 
 ### Data Analysis: QTL
@@ -115,16 +115,16 @@ cufflinks -p 10 --library-type fr-firststrand -o Sample_NAME/ -G REFERENCE.gtf S
 
 **Step 3:** Convert FPKM To tpm 
 ```
-perl Convert_FPKM_To_TPM.pl /PATH/TO/CUFFLINK
+perl Convert_FPKM_To_TPM_mRNA.pl /PATH/TO/CUFFLINK
 ```
 **Step 4:** Filter TPM based on the experimental condition
 
 ```
-Filter_TPM.pl /PATH/TO/Consolidate_TPM.txt
+Filter_TPM_mRNA.pl /PATH/TO/Consolidate_TPM.txt
 ```
 
 **Step 5:** Convert log10(TPM+1)
 
 ```
-perl log10_TPM.pl /PATH/TO/File
+perl log10_TPM_mRNA.pl /PATH/TO/File
 ```
