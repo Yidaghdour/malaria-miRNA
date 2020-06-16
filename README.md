@@ -7,9 +7,9 @@ Types of analysis:
 
   a. [miRNA profiling](#Usage Pipeline)
   
-  b. [eQTL analysis](#miRNA-Analysis)
+  b. [eQTL analysis](#miRNA-eQTL analysis)
   
-  c. [Mediation analysis](#miRNA-Analysis)
+  c. [Mediation analysis](#Mediation analysis)
 
 2) [mRNA-Analysis](#mRNA-Analysis)
 
@@ -35,7 +35,7 @@ Whole blood miRNAs expression profiles across matched individuals  in the four s
 
 [plink](https://www.cog-genomics.org/plink/): v1.90b5.3 
 
-### Usage Pipeline : miRNA  Data Analysis
+# Usage Pipeline : miRNA  Data Analysis
 
 
 **Step 1:** Trim Reads for adaptors, quality and polyA tails:
@@ -63,7 +63,7 @@ perl Filter_On_Consolidated_miRNA.pl /PATH/TO/CONSOLIDATED_RESULT File
 
 Filtered row counts were  log2 transformed, before being mean normalized using JMP Genomics 8 (SAS Institute).
 
-### miRNA-eQTL analysis
+# miRNA-eQTL analysis
 
 For each miRNA in our replication dataset, the level of expression was tested against all variants (MAF > 5%, HWE p-value >0.05) located within a window of **200 kb** centered from the miRNA.
 
@@ -93,7 +93,7 @@ $COV: Covariate file
 plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
 
 ```
-### Mediation analysis
+# Mediation analysis
 Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia. An example code of the analysis between SNP **rs114136945** and miRNA **miR_598_3p** is provided below
 
 ```
