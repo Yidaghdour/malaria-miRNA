@@ -5,7 +5,7 @@ Types of analysis:
 
 1) [miRNA-Analysis](#miRNA-Analysis)
 
-  a. [miRNA profiling](###Usage Pipeline)
+  a. [miRNA profiling](#Usage Pipeline)
   
   b. [eQTL analysis](#miRNA-Analysis)
   
