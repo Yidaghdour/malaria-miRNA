@@ -24,7 +24,7 @@ Integrative genomic analysis reveals mechanisms of immune evasion in P. falcipar
 
 [plink](https://www.cog-genomics.org/plink/): v1.90b5.3 
 
-### Data Analysis: Trim, Aligning and Filtering Data
+### Usage Pipeline : miRNA  Data Analysis
 
 
 **Step 1:** Trim Reads for adaptors, quality and polyA tails:
