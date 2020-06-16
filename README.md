@@ -10,6 +10,7 @@ Types of analysis:
     b. [eQTL analysis](#miRNA-eQTL-analysis)
   
     c. [Mediation analysis](#Mediation-analysis)
+    
 
 2) [mRNA-Analysis](#mRNA-Analysis)
 
