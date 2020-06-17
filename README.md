@@ -126,27 +126,35 @@ summary(results)
 
 ### Usage Pipeline
 
-**Step 1:** Align trimmed RNA Sequencing Data and create Index of the bam
+**Step 1:** Clean Raw reads
+
+Using Trimmomatic  adapter sequences and low-quality bases are removed
+```
+trimmomatic PE -threads 24 -trimlog SAMPLENAME_trimmomatic.log SAMPLENAME_read1.fastq.gz SAMPLENAME_read2.fastq.gz SAMPLENAME_read1_trimmomatic_1PE.fastq SAMPLENAME_read1_trimmomatic_1SE.fastq SAMPLENAME_read2_trimmomatic_2PE.fastq SAMPLENAME_read2_trimmomatic_2SE.fastq ILLUMINACLIP:trimmomatic_adapter.fa:2:30:10 TRAILING:3 LEADING:3 SLIDINGWINDOW:4:15 MINLEN:76
+```
+
+**Step 2:** Align trimmed RNA Sequencing Data and create Index of the bam
+Filtered reads were then mapped to the human reference genome (Ensembl GRCh38 release-84).
 ```
 STAR --genomeDir /PATH/STAR/REFERENCE/INDEX/ --readFilesCommand gunzip -c  --readFilesIn Sample_NAME_read1_trimmomatic_1PE.gz Sample_NAME_read2_trimmomatic_2PE.gz --outReadsUnmapped Fastx --outSAMunmapped Within --runThreadN 28 --outFileNamePrefix Sample_NAME --outSAMtype BAM SortedByCoordinate
 
 samtools index Sample_NAME/Aligned.sortedByCoord.out.bam
 ```
-**Step 2:** Calculate FPKM 
+**Step 3:** Calculate FPKM 
 ```
 cufflinks -p 10 --library-type fr-firststrand -o Sample_NAME/ -G REFERENCE.gtf Sample_NAME/Aligned.sortedByCoord.out.bam
 ```
 
-**Step 3:** Convert FPKM To tpm 
+**Step 4:** Convert FPKM To tpm 
 ```
 perl Convert_FPKM_To_TPM_mRNA.pl /PATH/TO/CUFFLINK
 ```
-**Step 4:** Filter TPM based on the experimental condition
+**Step 5:** Filter TPM based on the experimental condition
 
 ```
 Filter_TPM_mRNA.pl /PATH/TO/Consolidate_TPM.txt
 ```
 
-**Step 5:** Normalization of Data 
+**Step 6:** Normalization of Data 
 
 Filterd TPM data is log10-scaled before being  IQR normalized using JMP Genomics (SAS Institute).
