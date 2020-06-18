@@ -98,9 +98,11 @@ plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno
 
 ```
 ### Mediation analysis
-Mediation analysis was performed using the R package “Mediation”. This analysis was restricted to the miRNAs under genetic control and that are significantly associated with parasitemia. An example code of the analysis between SNP **rs114136945** and miRNA **miR_598_3p** is provided below
+Mediation analysis was performed using the R package “Mediation”. Mediation analysis was performed for all miRNAs correlated with parasitemia among the significant SNP-miRNA pairs. An example code for mediation analysis between SNP **rs114136945** and miRNA **miR_598_3p** is provided below
 
 ```
+library("mediation")
+library("sandwich")
 model.0 <- lm(Log2_Parasitemia ~ rs114136945, data)
 summary(model.0)
 
