@@ -94,7 +94,7 @@ $COV: Covariate file
 
 **Step 2:** miRNA-SNP associations with  100,000 permutation
 ```
-plink --all-pheno --bfile $ID --covar $COV --linear interaction --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT  --parameters 1-10 --mperm 100000 --seed 1234567--tests 10
+plink --all-pheno --bfile $ID --covar $COV --linear dominant --no-sex --pheno PHENOFOLDER/$ID\.txt --out  100000/nontdtINT --mperm 100000 --seed 1234567 
 
 ```
 ### Mediation analysis
